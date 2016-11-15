@@ -11,11 +11,10 @@ import java.util._
 import scala.io.Source
 
 class WordList(file: String) {
-	def words = Source.fromFile(file).getLines.toVector
-	def rand = new Random(System.currentTimeMillis)
+	val words = Source.fromFile(file).getLines.toVector
+	val rand = new Random(System.currentTimeMillis)
 
 	def getRandom: String = {
-		var pos = rand.nextInt(words.length)
-		words(pos)
+		words(rand.nextInt(words.length))
 	}
 }
