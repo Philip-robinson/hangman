@@ -6,16 +6,16 @@
 
 package uk.co.rpl
 
-import java.io._
 import java.util._
+
 import scala.io.Source
 
 class WordList(file: String) {
 	def words = Source.fromFile(file).getLines.toVector
-	def rand = new Random(System.currentTimeMillis);
+	def rand = new Random(System.currentTimeMillis)
 
 	def getRandom: String = {
 		var pos = rand.nextInt(words.length)
-		return words(pos)
+		words(pos)
 	}
 }
