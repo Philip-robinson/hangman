@@ -30,7 +30,7 @@ class WordHolder(word: String) {
 
 	private def findReplace(letter: Char, base: String, entered: List[Char]): (List[Char], Boolean) = {
 		if (entered.isEmpty) return (List(), false)
-		var (next, found) = findReplace(letter, base.tail, entered.tail)
+		val (next, found) = findReplace(letter, base.tail, entered.tail)
 		if (base.head == letter) {
 			return (letter :: next, true)
 		}

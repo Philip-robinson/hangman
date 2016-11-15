@@ -19,36 +19,17 @@ object HangingMen {
   private def hangedMenList = List(
     """
 
-
-
-
-
-
-
     """,
     """
-
-
-
-
-
 
  ----------
     """,
     """
-
-
-
-
 
  /
  ----------
     """,
     """
-
-
-
-
 
  / \
  ----------
