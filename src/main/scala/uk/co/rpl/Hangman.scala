@@ -33,11 +33,12 @@ object Hangman {
     var skip = false
     for (char <- line.toUpperCase) {
       if (!skip) {
-        val (error, used, set) = word.put(char)
-        if (used) output.prline("That letter " + char + " has already been used")
-        else if (error!=null) output.prline("That letter " + char + " is not allowed "+error)
-        else if (set) output.prline("The letter " + char + " was valid")
-        else output.prline("The letter " + char + " is not in this word")
+        word.put(char) match {
+          case (_, true, _) =>output.prline("That letter " + char + " has already been used")
+          case  (error, _, _) if error != null => output.prline("That letter " + char + " is not allowed " + error)
+          case (_, _, true) => output.prline("The letter " + char + " was valid")
+          case _ => output.prline("The letter " + char + " is not in this word")
+        }
         if (word.isFailed || word.isFound) skip = true
       }
     }
