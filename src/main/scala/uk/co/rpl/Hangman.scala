@@ -34,10 +34,10 @@ object Hangman {
     for (char <- line.toUpperCase) {
       if (!skip) {
         word.put(char) match {
-          case (_, true, _) =>output.prline("That letter " + char + " has already been used")
-          case  (error, _, _) if error != null => output.prline("That letter " + char + " is not allowed " + error)
-          case (_, _, true) => output.prline("The letter " + char + " was valid")
-          case _ => output.prline("The letter " + char + " is not in this word")
+          case (null, true, _) =>output.prline("That letter " + char + " has already been used")
+          case (null, _, true) => output.prline("The letter " + char + " was valid")
+          case (null, _, _) => output.prline("The letter " + char + " is not in this word")
+          case  (error, _, _)  => output.prline("That letter " + char + " is not allowed " + error)
         }
         if (word.isFailed || word.isFound) skip = true
       }
