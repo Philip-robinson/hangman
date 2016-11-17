@@ -2,6 +2,9 @@ package uk.co.rpl
 
 /**
   * Created by philip on 15/11/2016.
+  *
+  * HangingMen generates hangman ascii art strings for each stage of the
+  * hangman game
   */
 object HangingMen {
 
