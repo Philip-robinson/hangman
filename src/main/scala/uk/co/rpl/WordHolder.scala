@@ -37,17 +37,18 @@ class WordHolder(word: String) {
 		(entered.head :: next, found)
 	}
 
-	def put(letter: Char): (Boolean, Boolean) = {
+	def put(letter: Char): (String, Boolean, Boolean) = {
 		def ucLetter = letter.toUpper
-		if (!lettersAvailable.contains(ucLetter)) return (true, false)
+		if (ucLetter>'Z' || ucLetter<'A') return ("Invalid character", false, false)
+		if (!lettersAvailable.contains(ucLetter)) return (null, true, false)
 		val (newEntered, found) = findReplace(ucLetter, master, entered)
 		lettersAvailable = lettersAvailable.replaceAll("" + ucLetter, "-")
 		if (!found) {
 			failures += 1
-			return (false, false)
+			return (null, false, false)
 		}
 		entered = newEntered
-		(false, true)
+		(null, false, true)
 	}
 
 	def getFailCount: Int = {
